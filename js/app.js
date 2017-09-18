@@ -1,5 +1,3 @@
-let apiURL = 'https://blockchain.info/ticker';
-
 Vue.component('currency-row', {
   props: ['value', 'type'],
   template: '<tr>\
@@ -13,7 +11,7 @@ Vue.component('currency-row', {
 let vm = new Vue({
   el: '#app',
   data: {
-    panelTitle: apiURL,
+    apiURL:'https://blockchain.info/ticker',
   	feedData: null,
     feedError: null
   },
@@ -25,7 +23,7 @@ let vm = new Vue({
       var self = this;
       let fetchObject = new Promise(function (resolve, reject){
         var xhr = new XMLHttpRequest()
-        xhr.open('GET', apiURL);
+        xhr.open('GET', self.apiURL);
         xhr.onload = resolve;
         xhr.onerror = reject;
         xhr.send();
